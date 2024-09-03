@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap');
+
+body {
+    font-family: 'Plus Jakarta Sans', 'Noto Sans', sans-serif;
+    background-color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%; 
+    max-width: 706px; 
+    height: 515px; 
+    background: #FFFFFF; /* White background */
+    border-radius: 8px; /* Slightly rounded corners */
+    border-width: 1px; 
+    border-color: #E2E8F0; 
+    border-style: solid; 
+    box-shadow: 0px 4px 12px rgba(23, 26, 31, 0.1); /* Softer shadow for a modern effect */
+    padding: 20px; /* Padding inside the container */
+    overflow-y: auto; /* Add vertical scroll if content overflows */
+    margin-top: 20px; /* Add margin to separate from the heading */
+}
+
+.container h3 {
+    font-size: 18px; 
+    font-weight: bold; 
+    margin-bottom: 10px;
+}
+
+.container p {
+    font-size: 16px; 
+    line-height: 1.6; /* Increase line height for readability */
+    color: #333; /* Darker color for better contrast */
+    margin-bottom: 10px; /* Space between paragraphs */
+}
+
+.container ul {
+    padding-left: 20px; /* Indent bullet points */
+    margin: 0 0 10px; /* Space between lists and paragraphs */
+}
+
+.container ul li {
+    list-style-type: disc; 
+    margin-bottom: 5px; /* Space between bullet points */
+}
+
+.input-column {
+    width: 320px;
+    margin-right: 20px;
+}
+
+.output-column {
+    flex: 1;
+    max-width: 960px;
+}
+
+h1 {
+    color: #1C160C;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 16px;
+    border: 1px solid #E9DFCE;
+    border-radius: 12px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: #F9F9F9;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.2s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+.disclaimer {
+    color: #A18249;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+
+.button-group button {
+    flex: 1;
+}
+
+.headline-set {
+    background-color: #F9F9F9;
+    border: 1px solid #E9DFCE;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.headline-set h3 {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.headline-set p {
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 1.5;
+}
