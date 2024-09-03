@@ -15,6 +15,23 @@ function OutputColumn({ generatedCopy, isLoading, error }) {
     ));
   };
 
+  const downloadHeadlines = () => {
+    const element = document.createElement("a");
+    const file = new Blob([generatedCopy], { type: 'text/plain' });
+    element.href = URL.createObjectURL(file);
+    element.download = "headlines.txt";
+    document.body.appendChild(element); // Required for this to work in FireFox
+    element.click();
+  };
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(generatedCopy).then(() => {
+      alert("Headlines copied to clipboard!");
+    }, (err) => {
+      console.error('Could not copy text: ', err);
+    });
+  };
+
   return (
     <div className="output-column px-4 w-full md:w-auto">
       <h2 className="text-[#1C160C] text-xl font-bold leading-tight tracking-[-0.015em]">Generated Headlines</h2>
@@ -27,6 +44,26 @@ function OutputColumn({ generatedCopy, isLoading, error }) {
           {renderCopy()}
         </div>
       )}
+      <div className="flex gap-4 mt-4">
+        <button
+          className="flex items-center justify-center bg-blue-500 text-white rounded-full p-3 hover:bg-blue-600"
+          onClick={downloadHeadlines}
+          title="Download all headlines as a text file"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
+          </svg>
+        </button>
+        <button
+          className="flex items-center justify-center bg-green-500 text-white rounded-full p-3 hover:bg-green-600"
+          onClick={copyToClipboard}
+          title="Copy all headlines to clipboard"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 16h8M8 12h8m-8-4h8m-6 8h.01M12 20h.01M12 4h.01M4 8h.01M4 12h.01M4 16h.01M4 20h.01M20 8h.01M20 12h.01M20 16h.01M20 20h.01" />
+          </svg>
+        </button>
+      </div>
       <p className="text-[#1C160C] text-base font-normal leading-normal pb-3 pt-1">
         Sometimes our AI model will generate 'headlines' like made-up testimonials or studies. Please note this when using our model and check back in for regular updates as
         we address this issue.
