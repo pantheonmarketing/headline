@@ -16,7 +16,7 @@ function OutputColumn({ generatedCopy, isLoading, error }) {
   };
 
   return (
-    <div className="output-column px-4">
+    <div className="output-column px-4 w-full md:w-auto">
       <h2 className="text-[#1C160C] text-xl font-bold leading-tight tracking-[-0.015em]">Generated Headlines</h2>
       {isLoading ? (
         <p className="text-[#1C160C] text-base font-normal leading-normal">Generating headlines...</p>

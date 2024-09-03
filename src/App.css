@@ -46,8 +46,8 @@ body {
 }
 
 .input-column {
-    width: 320px;
-    margin-right: 20px;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 .output-column {

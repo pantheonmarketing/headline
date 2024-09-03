@@ -34,7 +34,7 @@ function App() {
             <h2 className="text-[#1C160C] text-lg font-bold leading-tight tracking-[-0.015em]">Headline Generator</h2>
           </div>
         </header>
-        <div className="gap-1 px-6 flex flex-1 justify-center py-5">
+        <div className="gap-1 px-6 flex flex-1 flex-col md:flex-row justify-center py-5">
           <InputColumn onGenerateCopy={handleGenerateCopy} isLoading={isLoading} />
           <OutputColumn generatedCopy={generatedCopy} isLoading={isLoading} error={error} />
         </div>

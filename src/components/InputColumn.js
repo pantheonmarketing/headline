@@ -34,12 +34,12 @@ function InputColumn({ onGenerateCopy, isLoading }) {
   };
 
   return (
-    <div className="layout-content-container flex flex-col w-80">
-      <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-        <label className="flex flex-col min-w-40 flex-1">
+    <div className="layout-content-container flex flex-col w-full md:w-80">
+      <div className="flex flex-wrap items-end gap-4 px-4 py-3">
+        <label className="flex flex-col w-full">
           <p className="text-[#1C160C] text-lg font-medium leading-normal pb-2">Target audience (be as specific as possible)</p>
           <input
-            className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#1C160C] focus:outline-0 focus:ring-0 border border-[#E9DFCE] bg-[#F9F9F9] focus:border-[#E9DFCE] h-14 placeholder:text-[#A18249] p-[15px] text-base font-normal leading-normal"
+            className="form-input w-full resize-none overflow-hidden rounded-xl text-[#1C160C] focus:outline-0 focus:ring-0 border border-[#E9DFCE] bg-[#F9F9F9] focus:border-[#E9DFCE] h-14 placeholder:text-[#A18249] p-[15px] text-base font-normal leading-normal"
             type="text"
             name="targetAudience"
             value={inputData.targetAudience}
@@ -48,11 +48,11 @@ function InputColumn({ onGenerateCopy, isLoading }) {
           />
         </label>
       </div>
-      <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-        <label className="flex flex-col min-w-40 flex-1">
+      <div className="flex flex-wrap items-end gap-4 px-4 py-3">
+        <label className="flex flex-col w-full">
           <p className="text-[#1C160C] text-lg font-medium leading-normal pb-2">The desired outcome</p>
           <input
-            className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#1C160C] focus:outline-0 focus:ring-0 border border-[#E9DFCE] bg-[#F9F9F9] focus:border-[#E9DFCE] h-14 placeholder:text-[#A18249] p-[15px] text-base font-normal leading-normal"
+            className="form-input w-full resize-none overflow-hidden rounded-xl text-[#1C160C] focus:outline-0 focus:ring-0 border border-[#E9DFCE] bg-[#F9F9F9] focus:border-[#E9DFCE] h-14 placeholder:text-[#A18249] p-[15px] text-base font-normal leading-normal"
             type="text"
             name="desiredOutcome"
             value={inputData.desiredOutcome}
@@ -61,11 +61,11 @@ function InputColumn({ onGenerateCopy, isLoading }) {
           />
         </label>
       </div>
-      <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-        <label className="flex flex-col min-w-40 flex-1">
+      <div className="flex flex-wrap items-end gap-4 px-4 py-3">
+        <label className="flex flex-col w-full">
           <p className="text-[#1C160C] text-lg font-medium leading-normal pb-2">1-3 pain points or things they don't like (separate with commas)</p>
           <textarea
-            className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#1C160C] focus:outline-0 focus:ring-0 border border-[#E9DFCE] bg-[#F9F9F9] focus:border-[#E9DFCE] min-h-36 placeholder:text-[#A18249] p-[15px] text-base font-normal leading-normal"
+            className="form-input w-full resize-none overflow-hidden rounded-xl text-[#1C160C] focus:outline-0 focus:ring-0 border border-[#E9DFCE] bg-[#F9F9F9] focus:border-[#E9DFCE] min-h-36 placeholder:text-[#A18249] p-[15px] text-base font-normal leading-normal"
             name="painPoints"
             value={inputData.painPoints}
             onChange={handleInputChange}
@@ -73,11 +73,11 @@ function InputColumn({ onGenerateCopy, isLoading }) {
           ></textarea>
         </label>
       </div>
-      <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-        <label className="flex flex-col min-w-40 flex-1">
+      <div className="flex flex-wrap items-end gap-4 px-4 py-3">
+        <label className="flex flex-col w-full">
           <p className="text-[#1C160C] text-lg font-medium leading-normal pb-2">Your unique solution</p>
           <input
-            className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#1C160C] focus:outline-0 focus:ring-0 border border-[#E9DFCE] bg-[#F9F9F9] focus:border-[#E9DFCE] h-14 placeholder:text-[#A18249] p-[15px] text-base font-normal leading-normal"
+            className="form-input w-full resize-none overflow-hidden rounded-xl text-[#1C160C] focus:outline-0 focus:ring-0 border border-[#E9DFCE] bg-[#F9F9F9] focus:border-[#E9DFCE] h-14 placeholder:text-[#A18249] p-[15px] text-base font-normal leading-normal"
             type="text"
             name="uniqueSolution"
             value={inputData.uniqueSolution}
@@ -86,11 +86,11 @@ function InputColumn({ onGenerateCopy, isLoading }) {
           />
         </label>
       </div>
-      <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-        <label className="flex flex-col min-w-40 flex-1">
+      <div className="flex flex-wrap items-end gap-4 px-4 py-3">
+        <label className="flex flex-col w-full">
           <p className="text-[#1C160C] text-lg font-medium leading-normal pb-2">What month are we in now?</p>
           <select
-            className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#1C160C] focus:outline-0 focus:ring-0 border border-[#E9DFCE] bg-[#F9F9F9] focus:border-[#E9DFCE] h-14 bg-[image:--select-button-svg] placeholder:text-[#A18249] p-[15px] text-base font-normal leading-normal"
+            className="form-input w-full resize-none overflow-hidden rounded-xl text-[#1C160C] focus:outline-0 focus:ring-0 border border-[#E9DFCE] bg-[#F9F9F9] focus:border-[#E9DFCE] h-14 bg-[image:--select-button-svg] placeholder:text-[#A18249] p-[15px] text-base font-normal leading-normal"
             name="currentMonth"
             value={inputData.currentMonth}
             onChange={handleInputChange}
