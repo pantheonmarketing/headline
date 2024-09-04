@@ -35,32 +35,43 @@ Example format:
 
 Ensure the copy resonates emotionally with the audience and addresses their specific situation.`;
 
-  try {
-    console.log('Sending request to API...');
-    console.log('API Endpoint:', apiEndpoint);
-    console.log('API Key:', apiKey);
-    console.log('Prompt:', prompt);
+  const makeRequest = async (retryCount = 0) => {
+    try {
+      console.log('Sending request to API...');
+      console.log('API Endpoint:', apiEndpoint);
+      console.log('API Key:', apiKey);
+      console.log('Prompt:', prompt);
 
-    const response = await axios.post(
-      apiEndpoint,
-      {
-        model: "gpt-4",
-        messages: [{ role: "user", content: prompt }],
-        max_tokens: 1000
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${apiKey}`
+      const response = await axios.post(
+        apiEndpoint,
+        {
+          model: "gpt-4",
+          messages: [{ role: "user", content: prompt }],
+          max_tokens: 1000
         },
-      }
-    );
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`
+          },
+        }
+      );
 
-    console.log('Response received:', response.data);
-    return response.data.choices[0].message.content;
-  } catch (error) {
-    console.error('Error fetching headlines:', error.response ? error.response.data : error.message);
-    console.error('Error details:', error);
-    throw error;
-  }
+      console.log('Response received:', response.data);
+      return response.data.choices[0].message.content;
+    } catch (error) {
+      console.error('Error fetching headlines:', error.response ? error.response.data : error.message);
+      console.error('Error details:', error);
+
+      if (error.response && error.response.status === 401 && retryCount < 3) {
+        console.log(`Retrying request... (${retryCount + 1})`);
+        await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for 1 second before retrying
+        return makeRequest(retryCount + 1);
+      }
+
+      throw error;
+    }
+  };
+
+  return makeRequest();
 };

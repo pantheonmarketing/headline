@@ -64,10 +64,6 @@ function OutputColumn({ generatedCopy, isLoading, error }) {
           </svg>
         </button>
       </div>
-      <p className="text-[#1C160C] text-base font-normal leading-normal pb-3 pt-1">
-        Sometimes our AI model will generate 'headlines' like made-up testimonials or studies. Please note this when using our model and check back in for regular updates as
-        we address this issue.
-      </p>
     </div>
   );
 }
