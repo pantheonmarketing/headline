@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from "./ui/Button";
 
 function OutputColumn({ generatedCopy, isLoading, error }) {
   const renderCopy = () => {
@@ -11,15 +12,14 @@ function OutputColumn({ generatedCopy, isLoading, error }) {
         {set.split('\n').map((line, lineIndex) => (
           <p key={lineIndex} className="text-[#1C160C] text-base font-normal leading-normal">{line}</p>
         ))}
-        <button
-          className="absolute bottom-2 right-2 flex items-center justify-center bg-green-500 text-white rounded-full p-2 hover:bg-green-600"
+        <Button
+          className="absolute bottom-2 right-2 flex items-center justify-center bg-blue-500 text-white rounded-full p-2 hover:bg-blue-600"
           onClick={() => copySpecificSet(set)}
           title="Copy this set of headlines to clipboard"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 16h8M8 12h8m-8-4h8m-6 8h.01M12 20h.01M12 4h.01M4 8h.01M4 12h.01M4 16h.01M4 20h.01M20 8h.01M20 12h.01M20 16h.01M20 20h.01" />
-          </svg>
-        </button>
+          <CopyIcon className="w-4 h-4" />
+          <span className="sr-only">Copy Text</span>
+        </Button>
       </div>
     ));
   };
@@ -50,38 +50,73 @@ function OutputColumn({ generatedCopy, isLoading, error }) {
   };
 
   return (
-    <div className="output-column px-4 w-full md:w-auto">
-      <h2 className="text-[#1C160C] text-xl font-bold leading-tight tracking-[-0.015em]">Generated Headlines</h2>
-      {isLoading ? (
-        <p className="text-[#1C160C] text-base font-normal leading-normal">Generating headlines...</p>
-      ) : error ? (
-        <p className="text-[#FF0000] text-base font-normal leading-normal">{error}</p>
-      ) : (
-        <div className="generated-content container">
-          {renderCopy()}
+    <div className="flex flex-col w-full space-y-4 md:w-1/3 order-2 md:order-2">
+      <div className="flex flex-col w-full p-4 bg-white border rounded-md">
+        <h2 className="mb-4 text-lg font-bold">Generated Headlines</h2>
+        <div className="flex-1 border rounded-md">
+          {isLoading ? (
+            <p className="text-[#1C160C] text-base font-normal leading-normal">Generating headlines...</p>
+          ) : error ? (
+            <p className="text-[#FF0000] text-base font-normal leading-normal">{error}</p>
+          ) : (
+            <div className="generated-content container">
+              {renderCopy()}
+            </div>
+          )}
         </div>
-      )}
-      <div className="flex gap-4 mt-4">
-        <button
-          className="flex items-center justify-center bg-blue-500 text-white rounded-full p-3 hover:bg-blue-600"
-          onClick={downloadHeadlines}
-          title="Download all headlines as a text file"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
-          </svg>
-        </button>
-        <button
-          className="flex items-center justify-center bg-green-500 text-white rounded-full p-3 hover:bg-green-600"
-          onClick={copyToClipboard}
-          title="Copy all headlines to clipboard"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 16h8M8 12h8m-8-4h8m-6 8h.01M12 20h.01M12 4h.01M4 8h.01M4 12h.01M4 16h.01M4 20h.01M20 8h.01M20 12h.01M20 16h.01M20 20h.01" />
-          </svg>
-        </button>
+        <div className="flex justify-end gap-2 mt-4">
+          <Button variant="outline" size="icon" onClick={downloadHeadlines}>
+            <DownloadIcon className="w-4 h-4" />
+            <span className="sr-only">Download Text</span>
+          </Button>
+          <Button variant="outline" size="icon" onClick={copyToClipboard}>
+            <CopyIcon className="w-4 h-4" />
+            <span className="sr-only">Copy Text</span>
+          </Button>
+        </div>
       </div>
     </div>
+  );
+}
+
+function CopyIcon(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+    </svg>
+  );
+}
+
+function DownloadIcon(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <polyline points="7 10 12 15 17 10" />
+      <line x1="12" x2="12" y1="15" y2="3" />
+    </svg>
   );
 }
 

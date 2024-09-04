@@ -9,17 +9,19 @@ export const fetchHeadlines = async (inputData) => {
   console.log('Environment Variables:');
   console.log('REACT_APP_OPENAI_API_KEY:', process.env.REACT_APP_OPENAI_API_KEY);
 
+  const currentMonth = new Date().toLocaleString('default', { month: 'long' });
+
   const prompt = `You're an expert landing page copywriter, specializing in creating pre-headlines, headlines, and subheadlines that deeply resonate with the target audience and drive conversions. Generate 5 sets of pre-headlines, headlines, and subheadlines for a landing page based on the following information:
 
 Target audience: ${inputData.targetAudience}
 Desired outcome: ${inputData.desiredOutcome}
 Pain points or things they don't like: ${inputData.painPoints}
 Your unique solution: ${inputData.uniqueSolution}
-Current month: ${inputData.currentMonth}
+Current month: ${currentMonth}
 
 Follow these guidelines:
 1. Pre-headline: Call out the audience and add a pain point or desire.
-2. Headline: Use attention-grabbing words like "discover" or "revealed". Include steps (e.g., 3 secrets, 5 keys) and make the outcome sound easy or comfortable. End with "This ${inputData.currentMonth}, ${new Date().getFullYear()}".
+2. Headline: Use attention-grabbing words like "discover" or "revealed". Include steps (e.g., 3 secrets, 5 keys) and make the outcome sound easy or comfortable. End with "This ${currentMonth}, ${new Date().getFullYear()}".
 3. Subheadline: Start with "Without" and address a pain point. Use the format "(Without X & Even If Y)".
 
 Example format:
