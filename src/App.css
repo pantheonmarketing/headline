@@ -146,3 +146,11 @@ button[title]::after {
 button[title]:hover::after {
     opacity: 1;
 }
+
+.footer {
+    background-color: #f8f9fa;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 14px;
+    color: #6c757d;
+}

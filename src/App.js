@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import InputColumn from './components/InputColumn';
 import OutputColumn from './components/OutputColumn';
+import Footer from './components/Footer';
 import { fetchHeadlines } from './api/claudeApi';
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
           <InputColumn onGenerateCopy={handleGenerateCopy} isLoading={isLoading} />
           <OutputColumn generatedCopy={generatedCopy} isLoading={isLoading} error={error} />
         </div>
+        <Footer />
       </div>
     </div>
   );
