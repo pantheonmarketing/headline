@@ -6,11 +6,20 @@ function OutputColumn({ generatedCopy, isLoading, error }) {
     
     const sets = generatedCopy.split('\n\n').filter(set => set.trim() !== '');
     return sets.map((set, index) => (
-      <div key={index} className="headline-set mb-4 p-4 bg-white rounded-lg shadow-md">
+      <div key={index} className="headline-set mb-4 p-4 bg-white rounded-lg shadow-md relative">
         <h3 className="text-[#1C160C] text-lg font-bold leading-tight tracking-[-0.015em]">Set {index + 1}</h3>
         {set.split('\n').map((line, lineIndex) => (
           <p key={lineIndex} className="text-[#1C160C] text-base font-normal leading-normal">{line}</p>
         ))}
+        <button
+          className="absolute bottom-2 right-2 flex items-center justify-center bg-green-500 text-white rounded-full p-2 hover:bg-green-600"
+          onClick={() => copySpecificSet(set)}
+          title="Copy this set of headlines to clipboard"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 16h8M8 12h8m-8-4h8m-6 8h.01M12 20h.01M12 4h.01M4 8h.01M4 12h.01M4 16h.01M4 20h.01M20 8h.01M20 12h.01M20 16h.01M20 20h.01" />
+          </svg>
+        </button>
       </div>
     ));
   };
@@ -27,6 +36,14 @@ function OutputColumn({ generatedCopy, isLoading, error }) {
   const copyToClipboard = () => {
     navigator.clipboard.writeText(generatedCopy).then(() => {
       alert("Headlines copied to clipboard!");
+    }, (err) => {
+      console.error('Could not copy text: ', err);
+    });
+  };
+
+  const copySpecificSet = (set) => {
+    navigator.clipboard.writeText(set).then(() => {
+      alert("Set copied to clipboard!");
     }, (err) => {
       console.error('Could not copy text: ', err);
     });
